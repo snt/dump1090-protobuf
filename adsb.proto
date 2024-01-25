@@ -1,0 +1,108 @@
+syntax = "proto3";
+package adsb;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/snt/dump1090-mqtt-protobuf/adsb";
+
+//MSG,1
+message IdentificationAndCategory {
+  string  icao_addr = 1;
+  google.protobuf.Timestamp message_generated = 2;
+  google.protobuf.Timestamp message_logged = 3;
+
+  string callsign = 4;
+}
+
+//MSG,2
+message SurfacePositionMessage {
+  string  icao_addr = 1;
+  google.protobuf.Timestamp message_generated = 2;
+  google.protobuf.Timestamp message_logged = 3;
+
+  int32 altitude = 5;
+  int32 ground_speed = 6;
+  int32 track = 7;
+  double latitude = 8;
+  double longitude = 9;
+
+  bool is_on_ground = 15;
+}
+
+//MSG,3
+message AirbornePositionMessage {
+  string  icao_addr = 1;
+  google.protobuf.Timestamp message_generated = 2;
+  google.protobuf.Timestamp message_logged = 3;
+
+  int32 altitude = 5;
+
+  double latitude = 8;
+  double longitude = 9;
+
+  bool alert = 12;
+  bool emergency = 13;
+  bool spi = 14;
+  bool is_on_ground = 15;
+}
+
+//MSG,4
+message AirborneVelocityMessage {
+  string  icao_addr = 1;
+  google.protobuf.Timestamp message_generated = 2;
+  google.protobuf.Timestamp message_logged = 3;
+
+  int32 ground_speed = 6;
+  int32 track = 7;
+
+  int32 vertical_rate = 10;
+}
+
+//MSG,5
+message SurveillanceAltMessage {
+  string  icao_addr = 1;
+  google.protobuf.Timestamp message_generated = 2;
+  google.protobuf.Timestamp message_logged = 3;
+
+  int32 altitude = 5;
+
+  bool alert = 12;
+
+  bool spi = 14;
+  bool is_on_ground = 15;
+}
+
+//MSG,6
+message SurveillanceIdMessage {
+  string  icao_addr = 1;
+  google.protobuf.Timestamp message_generated = 2;
+  google.protobuf.Timestamp message_logged = 3;
+
+  int32 altitude = 5;
+
+  string squawk = 11;
+  bool alert = 12;
+  bool emergency = 13;
+  bool spi = 14;
+  bool is_on_ground = 15;
+}
+
+//MSG,7
+message AirToAirMessage {
+  string  icao_addr = 1;
+  google.protobuf.Timestamp message_generated = 2;
+  google.protobuf.Timestamp message_logged = 3;
+
+  int32 altitude = 5;
+
+  bool is_on_ground = 15;
+}
+
+//MSG,8
+message AllCallReply {
+  string  icao_addr = 1;
+  google.protobuf.Timestamp message_generated = 2;
+  google.protobuf.Timestamp message_logged = 3;
+
+  bool is_on_ground = 15;
+}
