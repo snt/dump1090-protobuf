@@ -3,7 +3,7 @@ package adsb;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/snt/dump1090-mqtt-protobuf/adsb";
+//option go_package = "github.com/snt/dump1090-protobuf";
 
 //MSG,1
 message IdentificationAndCategory {
