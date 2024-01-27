@@ -5,6 +5,19 @@ import "google/protobuf/timestamp.proto";
 
 //option go_package = "github.com/snt/dump1090-protobuf";
 
+message AdsbMessage {
+  oneof msg {
+    IdentificationAndCategory msg1 = 1;
+    SurfacePositionMessage msg2 = 2;
+    AirbornePositionMessage msg3 = 3;
+    AirborneVelocityMessage msg4 = 4;
+    SurveillanceAltMessage msg5 = 5;
+    SurveillanceIdMessage msg6 = 6;
+    AirToAirMessage msg7 = 7;
+    AllCallReply msg8 = 8;
+  }
+}
+
 //MSG,1
 message IdentificationAndCategory {
   string  icao_addr = 1;
